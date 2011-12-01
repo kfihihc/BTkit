@@ -16,6 +16,7 @@
     <string name="not_available">Bluetooth is not available</string>
     <string name="open">On</string>
     <string name="close">Off</string>
+    <string name="led_open">LED</string>
     <string name="value">Nothing</string>
     <string name="cancel">Cancel</string>
     <string name="more">More......</string>
