@@ -4,9 +4,10 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk android:minSdkVersion="8" />
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-sdk android:minSdkVersion="7" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
         android:icon="@drawable/ic_launcher"
@@ -16,21 +17,25 @@
             android:name=".BTkitMain" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="BTkitDeviceList"
-                  android:label="@string/select_device"
-                  android:theme="@android:style/Theme.Dialog"
-                  android:configChanges="orientation|keyboardHidden" />
-        <activity android:name="BTkitDeviceList"
-                  android:label="@string/chart"/>
+        <activity
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/select_device"
+            android:name="BTkitDeviceList"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity
+            android:label="@string/chart"
+            android:name="BTkitDeviceList" />
     </application>
 
-	<receiver android:name=".broadcast.PairingRequest">
-                  <intent-filter>
-                    <action android:name="android.bluetooth.device.action.PAIRING_REQUEST" /> 
-                    <action android:name="android.bluetooth.device.action.PAIRING_CANCEL" /> 
-                  </intent-filter>
-	</receiver>
+    <receiver android:name=".broadcast.PairingRequest" >
+        <intent-filter >
+            <action android:name="android.bluetooth.device.action.PAIRING_REQUEST" />
+            <action android:name="android.bluetooth.device.action.PAIRING_CANCEL" />
+        </intent-filter>
+    </receiver>
+
 </manifest>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2009 The Android Open Source Project
+<!--
+     Copyright (C) 2009 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -16,24 +17,26 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_vertical"
-  >
-  <TextView android:id="@+id/title_left_text"
-      android:layout_alignParentLeft="true"
-      android:ellipsize="end"
-      android:singleLine="true"
-      style="?android:attr/windowTitleStyle"
-      android:layout_width="wrap_content"
-      android:layout_height="match_parent"
-      android:layout_weight="1"
-    />
-    <TextView android:id="@+id/title_right_text"
-        android:layout_alignParentRight="true"
-        android:ellipsize="end"
-        android:singleLine="true"
+    android:gravity="center_vertical" >
+
+    <TextView
+        android:id="@+id/title_left_text"
+        style="?android:attr/windowTitleStyle"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:textColor="#fff"
-        android:layout_weight="1" 
-    />
+        android:layout_alignParentLeft="true"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/title_right_text"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="#fff" />
+
 </RelativeLayout>

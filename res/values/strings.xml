@@ -4,14 +4,14 @@
     <string name="hello">BTkitMain!</string>
     <string name="app_name">BTkit</string>
 
-    <!--  BTkitMain  -->
+    <!-- BTkitMain -->
     <string name="send">Send</string>
     <string name="not_connected">You are not connected to a device</string>
     <string name="bt_not_enabled_leaving">Bluetooth was not enabled. Leaving Bluetooth Chat.</string>
     <string name="title_connecting">connecting...</string>
     <string name="title_connected_to">connected: </string>
     <string name="title_not_connected">not connected</string>
-    <string name="connect">Connect a device</string>    
+    <string name="connect">Connect a device</string>
     <string name="discoverable">Make discoverable</string>
     <string name="not_available">Bluetooth is not available</string>
     <string name="open">On</string>
@@ -22,7 +22,7 @@
     <string name="more_action">Control List</string>
     <string name="get_and_chart">Get sources and Draw line chart </string>
 
-    <!--  BTkitDeviceList -->
+    <!-- BTkitDeviceList -->
     <string name="scanning">scanning for devices...</string>
     <string name="select_device">select a device to connect</string>
     <string name="none_paired">No devices have been paired</string>
@@ -30,10 +30,10 @@
     <string name="title_paired_devices">Paired Devices</string>
     <string name="title_other_devices">Other Available Devices</string>
     <string name="button_scan">Scan for devices</string>
-    
-	<!-- BTkitChart -->
-	<string name="chart">Draw Chart</string>
-	<string name="battery">Battery</string>
-	<string name="line_chart">Line Chart</string>
-	
+
+    <!-- BTkitChart -->
+    <string name="chart">Draw Chart</string>
+    <string name="battery">Battery</string>
+    <string name="line_chart">Line Chart</string>
+
 </resources>

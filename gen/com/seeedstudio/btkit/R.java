@@ -61,11 +61,11 @@ public final class R {
         public static final int not_available=0x7f04000a;
         public static final int not_connected=0x7f040003;
         public static final int open=0x7f04000b;
-        /**   BTkitDeviceList 
+        /**  BTkitDeviceList 
          */
         public static final int scanning=0x7f040012;
         public static final int select_device=0x7f040013;
-        /**   BTkitMain  
+        /**  BTkitMain 
          */
         public static final int send=0x7f040002;
         public static final int title_connected_to=0x7f040006;

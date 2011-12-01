@@ -1,62 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
-    <ListView android:id="@+id/in"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@+id/in"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:stackFromBottom="true"
-        android:transcriptMode="alwaysScroll"
         android:layout_weight="1"
-    />
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll" />
+
     <TextView
         android:id="@+id/value"
         android:layout_width="match_parent"
         android:layout_height="44dp"
-        android:text="@string/value"
-        android:textStyle="bold"
-        android:textSize="23sp"
         android:gravity="center_horizontal"
-        />
+        android:text="@string/value"
+        android:textSize="23sp"
+        android:textStyle="bold" />
+
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
-        <EditText android:id="@+id/edit_text_out"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/edit_text_out"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:layout_weight="1"
             android:layout_gravity="bottom"
-        />
-        <Button android:id="@+id/button_send"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/button_send"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:text="@string/send"
-        />
-	</LinearLayout>
-	<LinearLayout 
-	    android:orientation="horizontal"
+            android:text="@string/send" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-	    >
-        <ToggleButton android:id="@+id/toggle_button"
+        android:orientation="horizontal" >
+
+        <ToggleButton
+            android:id="@+id/toggle_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textOn="@string/open"
-        />
-	</LinearLayout>
+            android:textOn="@string/open" />
+    </LinearLayout>
+
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
-        <Button android:id="@+id/more_action"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/more_action"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/more"
-            />
+            android:text="@string/more" />
     </LinearLayout>
+
 </LinearLayout>

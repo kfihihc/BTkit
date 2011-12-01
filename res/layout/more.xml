@@ -6,14 +6,17 @@
     android:orientation="vertical"
     android:padding="10dp" >
 
-    <Button android:id="@+id/connect_button"
-        android:layout_width="fill_parent"
-    	android:layout_height="wrap_content"
-		android:text="@string/connect"
-		/>
-    <Button android:id="@+id/test_button"
+    <Button
+        android:id="@+id/connect_button"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/get_and_chart"
-        />"
+        android:text="@string/connect" />
+
+    <Button
+        android:id="@+id/test_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/get_and_chart" />
+"
+
 </LinearLayout>
