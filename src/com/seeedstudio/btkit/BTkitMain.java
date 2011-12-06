@@ -24,6 +24,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -48,20 +49,26 @@ public class BTkitMain extends Activity {
     private static final int REQUEST_CONNECT_DEVICE = 1;
     private static final int REQUEST_ENABLE_BT = 2;
     
+    // control code 
+    private static final int RELAY_ON = 001;
+    private static final int RELAY_OFF = 000;
+    private static final int BATTERY_SENSOR = 010;
+    
+    private static boolean isRecive = false;
+    
     private List<double[]> xValues = null;
     private List<double[]> yValues = null;
     private double[] tempD;
 
     // Layout Views
-    private TextView mTitle;
-    private TextView mValue;
+    private TextView mBattery, mTitle, mValue;
     private ListView mConversationView;
     private EditText mOutEditText;
-    private Button mSendButton;
+    private Button mSendButton, mMoreButton;
+    private ProgressBar batteryBar;
     //private Button mScanButton;
     //private Button mDiscoverableButton;
-    private ToggleButton mToggleButton;
-    private Button mMoreButton;
+    private ToggleButton ctlToggleButton, srcToggleButton;
 
     // Name of the connected device, 链接的设备的名称 
     private String mConnectedDeviceName = null;
@@ -91,8 +98,14 @@ public class BTkitMain extends Activity {
         mTitle.setText(R.string.app_name);
         mTitle = (TextView) findViewById(R.id.title_right_text);
 
+        mBattery = (TextView) this.findViewById(R.id.battery_text);
+        mBattery.setText(R.string.battery);
         mValue = (TextView)this.findViewById(R.id.value);
         mValue.setText("Value: " + "00");
+        
+        batteryBar = (ProgressBar) this.findViewById(R.id.battery_bar);
+        batteryBar.setIndeterminate(false);
+        batteryBar.setVisibility(View.VISIBLE);
         
         // Get local Bluetooth adapter
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -181,27 +194,34 @@ public class BTkitMain extends Activity {
         
         // Set up Toggle Button for open or close.
         // send 1 (open) or 0 (close) to target.
-        mToggleButton = (ToggleButton) this.findViewById(R.id.toggle_button);
-        mToggleButton.setOnClickListener( new OnClickListener() {
+        ctlToggleButton = (ToggleButton) this.findViewById(R.id.toggle_button);
+        ctlToggleButton.setOnClickListener( new OnClickListener() {
         	public void onClick(View v) {
         		//switch on or off
-        		byte[] message = new byte[1];
+        		//byte[] message = new byte[1];
         		
-        		if(mToggleButton.isChecked()){
-        			message[0] = 1;
-        			sendByte(message);
+        		if(ctlToggleButton.isChecked()){
+//        			message[0] = 1;
+//        			sendByte(message);
 //        			String message = new String("1");
-//        			sendMessage(message);
-                    mToggleButton.setText(R.string.open);
-        			Toast.makeText(BTkitMain.this, message[0] + " ON", Toast.LENGTH_SHORT).show();
+        			sendMessage("iot001");
+                    ctlToggleButton.setText(R.string.open);
+        			//Toast.makeText(BTkitMain.this, message[0] + " ON", Toast.LENGTH_SHORT).show();
         		}else{
-        			message[0] = 0;
-        			sendByte(message);
-/*        			String message = new String("0");
-        			sendMessage(message);*/
-                    mToggleButton.setText(R.string.close);
-                    Toast.makeText(BTkitMain.this, message[0] + " OFF", Toast.LENGTH_SHORT).show();
+//        			message[0] = 0;
+//        			sendByte(message);
+//        			String message = new String("0");
+        			sendMessage("iot000");
+                    ctlToggleButton.setText(R.string.close);
+                    //Toast.makeText(BTkitMain.this, message[0] + " OFF", Toast.LENGTH_SHORT).show();
         		}
+        	}
+        });
+        
+        srcToggleButton = (ToggleButton) this.findViewById(R.id.battery_toggle_button);
+        srcToggleButton.setOnClickListener(new OnClickListener() {
+        	public void onClick(View v) {
+        		isRecive = true;
         	}
         });
         
@@ -269,7 +289,6 @@ public class BTkitMain extends Activity {
         		.setTitle(R.string.more_action)
         		.setView(dialogLayout)
         		.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						dialog.cancel();
 					}
@@ -358,18 +377,38 @@ public class BTkitMain extends Activity {
                 mConversationArrayAdapter.add("Me:  " + writeMessage);
                 break;
             case MESSAGE_READ:
-                byte[] readBuf = (byte[]) msg.obj;          
+                byte[] readBuf = (byte[]) msg.obj;    
+                
                 // construct a string from the valid bytes in the buffer
-                String readMessage = new String(readBuf, 4, msg.arg1);
-                
-                for(int i = 0; i < readMessage.length(); i++) {
-                	tempD[i] = Double.parseDouble(readMessage);
-                }
-                yValues.add(tempD);
-                if(D) Log.d(TAG, "temp:" + tempD.toString() + "--" + "yValues:" +yValues.toString());
-                
-                mConversationArrayAdapter.add(mConnectedDeviceName+":  " + readMessage);
-                mValue.setText("Value: " + readMessage);
+//                String headerMessage = new String(readBuf, 0, 5);
+//                String readMessage = new String(readBuf, 6, msg.arg1);
+//                if (!headerMessage.equals("") && isRecive == true) {
+//                	//String cmdMsg = new String(readBuf, 3, 5);
+//                	
+//                	int swc = Integer.parseInt(headerMessage);
+//                	int i = Integer.parseInt(readMessage);
+//                	switch (swc) {
+//                	case BATTERY_SENSOR:
+//                		mBattery.setText("Battery: " + i);
+//                		batteryBar.setProgress(i);
+//                		break;
+//                	case RELAY_ON:
+//                		ctlToggleButton.setChecked(true);
+//                		break;
+//                	case RELAY_OFF:
+//                		ctlToggleButton.setChecked(false);
+//                		break;
+//                	}
+//                }
+//                for(int i = 0; i < readMessage.length(); i++) {
+//                	tempD[i] = Double.parseDouble(readMessage);
+//                }
+//                yValues.add(tempD);
+//                if(D) Log.d(TAG, "temp:" + tempD.toString() + "--" + "yValues:" +yValues.toString());
+                String message = new String(readBuf, 0, msg.arg1);
+                if (D) Log.d(TAG + "Read", message);
+                mConversationArrayAdapter.add(mConnectedDeviceName+":  " + message);
+                mValue.setText("Value: " + message);
                 break;
             case MESSAGE_DEVICE_NAME:
                 // save the connected device's name

@@ -34,7 +34,7 @@
 
     <!-- BTkitChart -->
     <string name="chart">Draw Chart</string>
-    <string name="battery">Battery</string>
+    <string name="battery">Sources: </string>
     <string name="line_chart">Line Chart</string>
 
 </resources>

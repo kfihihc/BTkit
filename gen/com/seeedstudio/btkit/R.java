@@ -14,23 +14,25 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
+        public static final int battery_bar=0x7f050008;
+        public static final int battery_text=0x7f050007;
+        public static final int battery_toggle_button=0x7f05000e;
         public static final int button_scan=0x7f050006;
-        public static final int button_send=0x7f05000a;
-        public static final int connect_button=0x7f05000f;
-        public static final int edit_text_out=0x7f050009;
-        public static final int in=0x7f050007;
-        public static final int led_toggle_button=0x7f05000c;
-        public static final int more_action=0x7f05000d;
-        public static final int more_root=0x7f05000e;
+        public static final int button_send=0x7f05000c;
+        public static final int connect_button=0x7f050011;
+        public static final int edit_text_out=0x7f05000b;
+        public static final int in=0x7f050009;
+        public static final int more_action=0x7f05000f;
+        public static final int more_root=0x7f050010;
         public static final int new_devices=0x7f050005;
         public static final int paired_devices=0x7f050003;
-        public static final int test_button=0x7f050010;
+        public static final int test_button=0x7f050012;
         public static final int title_left_text=0x7f050000;
         public static final int title_new_devices=0x7f050004;
         public static final int title_paired_devices=0x7f050002;
         public static final int title_right_text=0x7f050001;
-        public static final int toggle_button=0x7f05000b;
-        public static final int value=0x7f050008;
+        public static final int toggle_button=0x7f05000d;
+        public static final int value=0x7f05000a;
     }
     public static final class layout {
         public static final int custom_title=0x7f030000;
